@@ -7,9 +7,17 @@ import (
 
 func Sqrt(x float64) float64 {
 	z := x
-	for i := 0; i < 10; i++ {
+	zz := z + 1
+	epsilon := 0.000001
+
+	t := 0
+	for math.Abs(zz-z) > epsilon {
+		zz = z
 		z = z - (z*z-x)/(2*z)
+		t++
 	}
+	fmt.Printf("times = %d\n", t)
+
 	return z
 }
 
